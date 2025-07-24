@@ -97,6 +97,8 @@ namespace Walnut {
 
 		m_Interface->DestroyPollGroup(m_PollGroup);
 		m_PollGroup = k_HSteamNetPollGroup_Invalid;
+
+		m_HasShutdown = true;
 	}
 
 	void Server::ConnectionStatusChangedCallback(SteamNetConnectionStatusChangedCallback_t* info) { s_Instance->OnConnectionStatusChanged(info); }
@@ -288,6 +290,7 @@ namespace Walnut {
 	{
 		std::cout << message << std::endl;
 		m_Running = false;
+		m_HasShutdown = true;
 	}
 
 }

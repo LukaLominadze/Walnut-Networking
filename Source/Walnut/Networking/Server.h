@@ -72,6 +72,7 @@ namespace Walnut {
 		void KickClient(ClientID clientID);
 
 		bool IsRunning() const { return m_Running; }
+		bool HasShutdown() const { return m_HasShutdown; }
 		const std::map<HSteamNetConnection, ClientInfo>& GetConnectedClients() const { return m_ConnectedClients; }
 	private:
 		void NetworkThreadFunc(); // Server thread
@@ -93,6 +94,7 @@ namespace Walnut {
 
 		int m_Port = 0;
 		bool m_Running = false;
+		bool m_HasShutdown = false;
 		std::map<HSteamNetConnection, ClientInfo> m_ConnectedClients;
 
 		ISteamNetworkingSockets* m_Interface = nullptr;
